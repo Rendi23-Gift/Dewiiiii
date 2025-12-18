@@ -1,9 +1,9 @@
 :root {
-    --primary-color: #ff8fa3;
-    --secondary-color: #c9184a;
-    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --primary-color: #ff758c;
+    --secondary-color: #ff7eb3;
+    --bg-gradient: linear-gradient(135deg, #2c3e50, #fd746c, #ff9068);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
     --text-color: #ffffff;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Lato', sans-serif;
@@ -17,6 +17,8 @@
 
 body {
     background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-color);
     font-family: var(--font-body);
     height: 100vh;
@@ -24,6 +26,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .background-animation {
@@ -34,6 +42,7 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    pointer-events: none;
 }
 
 /* Floating bubbles animation */
@@ -45,7 +54,7 @@ body {
     height: 300px;
     background: var(--primary-color);
     filter: blur(80px);
-    opacity: 0.4;
+    opacity: 0.3;
     border-radius: 50%;
     animation: float 10s infinite alternate;
 }
@@ -58,13 +67,23 @@ body {
 .background-animation::after {
     bottom: -50px;
     right: -50px;
-    background: var(--secondary-color);
+    background: #ffdde1;
     animation-delay: -5s;
 }
 
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+.heart {
+    position: absolute;
+    top: -10vh;
+    font-size: 1.5rem;
+    color: rgba(255, 182, 193, 0.8);
+    animation: fall linear forwards;
+    z-index: 0;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
 
 .container {

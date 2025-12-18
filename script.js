@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             fireConfetti();
+            startFallingHearts();
         }, 500);
     }
 
@@ -96,20 +97,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: ['#ff8fa3', '#c9184a', '#ffd700']
+                colors: ['#ff758c', '#ff7eb3', '#ffffff', '#ffd700']
             });
             confetti({
                 particleCount: 5,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: ['#ff8fa3', '#c9184a', '#ffd700']
+                colors: ['#ff758c', '#ff7eb3', '#ffffff', '#ffd700']
             });
 
             if (Date.now() < end) {
                 requestAnimationFrame(frame);
             }
         }());
+    }
+
+    // Falling Hearts Animation
+    function startFallingHearts() {
+        const bgAnimation = document.querySelector('.background-animation');
+        
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // Random positioning and sizing
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5s
+            heart.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+            heart.style.opacity = Math.random() * 0.7 + 0.3;
+            
+            bgAnimation.appendChild(heart);
+
+            // Remove after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }, 300);
     }
 });
 
