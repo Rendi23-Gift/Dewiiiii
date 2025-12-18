@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fireConfetti();
             startFallingHearts();
+            startAutoPlay();
         }, 500);
     }
 
@@ -73,18 +74,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     const slides = document.querySelectorAll('.message-slide');
     const totalSlides = slides.length;
+    let slideInterval;
+    let cycles = 0;
 
-    window.nextSlide = function() {
+    window.nextSlide = function(auto = false) {
+        if (auto && currentSlide === totalSlides - 1) {
+            cycles++;
+            if (cycles >= 2) {
+                clearInterval(slideInterval);
+                return;
+            }
+        }
+
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % totalSlides;
         slides[currentSlide].classList.add('active');
     };
 
     window.prevSlide = function() {
+        clearInterval(slideInterval);
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
     };
+
+    function startAutoPlay() {
+        slideInterval = setInterval(() => window.nextSlide(true), 5000);
+    }
 
     // Confetti Effect
     function fireConfetti() {
