@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Dewi Marwah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="background-animation"></div>
+
+    <div class="music-control" id="musicControl">
+        <span id="musicIcon">🔇</span>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="container" id="mainContainer">
+        
+        <!-- Welcome Screen -->
+        <section id="welcome" class="screen active">
+            <div class="glass-card">
+                <h1>Halo, Dewi</h1>
+                <p>Ada sesuatu yang spesial untukmu hari ini.</p>
+                <div class="input-group">
+                    <input type="password" id="passInput" placeholder="Kode Rahasia (DDMMYYYY)" maxlength="8">
+                    <button id="btnEnter">Buka</button>
+                </div>
+                <p class="hint">Petunjuk: Tanggal hari ini</p>
+            </div>
+        </section>
+
+        <!-- Content Screen -->
+        <section id="celebration" class="screen hidden">
+            <div class="glass-card content-card">
+                <div class="profile-icon">🎂</div>
+                <h2 class="title">Selamat Ulang Tahun</h2>
+                <h1 class="name">Dewi Marwah</h1>
+                <p class="date">18 Desember 2025</p>
+                
+                <div class="message-carousel">
+                    <div class="message-slide active" data-index="0">
+                        <p>"Di hari istimewamu ini, biarkan dunia berhenti sejenak untuk merayakan kehadiranmu."</p>
+                    </div>
+                    <div class="message-slide" data-index="1">
+                        <p>"Dua puluh delapan tahun perjalananmu adalah cerita indah yang terus tertulis."</p>
+                    </div>
+                    <div class="message-slide" data-index="2">
+                        <p>"Terima kasih telah menjadi cahaya yang hangat dan menenangkan."</p>
+                    </div>
+                    <div class="message-slide" data-index="3">
+                        <p>"Semoga tahun ini membawa lebih banyak tawa, cinta, dan mimpi yang terwujud."</p>
+                    </div>
+                    <div class="message-slide" data-index="4">
+                        <p>I Love You ❤️</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+                    <button class="nav-btn next" onclick="nextSlide()">❯</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
